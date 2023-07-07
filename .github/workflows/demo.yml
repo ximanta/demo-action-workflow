@@ -16,7 +16,12 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
+          distribution: 'temurin'
 
-      - name: Build and Test
+      - name: Test
 
-        run: mvn --batch-mode --update-snapshots package
+        run: mvn --batch-mode --update-snapshots test
+        
+      -  name: Package
+
+         run: mvn package
