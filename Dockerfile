@@ -5,10 +5,10 @@ FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /app
 
 # Copy the JAR file into the container
-COPY target/my-api.jar my-api.jar
+COPY target/demo-0.0.1-SNAPSHOT.jar demo-0.0.1-SNAPSHOT.jar
 
 # Expose the port that the application listens on
 EXPOSE 8080
 
 # Set the command to run the application when the container starts
-CMD ["java", "-jar", "my-api.jar"]
+CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
