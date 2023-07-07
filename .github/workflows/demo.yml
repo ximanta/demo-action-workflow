@@ -1,5 +1,43 @@
-name: Build and Test
+🤝
+YAML Lint
+Paste in your YAML and click "Go" - we'll tell you if it's valid or not, and give you a nice clean UTF-8 version of it.
 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+---
+name: Build and Test
 on:
   push:
     branches:
@@ -7,21 +45,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
-          distribution: 'temurin'
-
+          java-version: "17"
+          distribution: temurin
       - name: Test
-
         run: mvn --batch-mode --update-snapshots test
-        
-      -  name: Package
+      - name: Package
+        run: mvn package
+      - name: Publish
+        uses: docker/build-push-action@v1
+        with:
+          username: ximanta.sarma@gmail.com
+          password: Projects@2015
+          repository: simanta/githubcicd
+          tags: ${{github.run_number}}
 
-         run: mvn package
+
