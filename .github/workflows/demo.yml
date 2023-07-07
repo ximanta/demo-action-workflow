@@ -32,12 +32,4 @@ jobs:
             context: .
             push: true
             tags: simanta/githubcicd
-#      - name: Publish
-#        uses: docker/build-push-action@v2
-#        with:
-#          username: ximanta.sarma@gmail.com
-#          password: Projects@2015
-#          repository: simanta/githubcicd
-#          tags: ${{github.run_number}}
-
 
